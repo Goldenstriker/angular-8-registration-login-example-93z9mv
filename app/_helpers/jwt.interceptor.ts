@@ -26,10 +26,10 @@ export class JwtInterceptor implements HttpInterceptor {
                     Authorization: `Bearer ${currentUser.token}`
                 }*/
         setHeaders: {
-              "Content-Type": "application/json; charset=utf-8",
-              'Accept': "application/json",
-              'Authorization': `Bearer ${currentUser.token)}`
-            }
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json",
+          Authorization: `Bearer ${currentUser.token}`
+        }
       });
       console.log(request.headers);
     }
