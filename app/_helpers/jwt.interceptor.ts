@@ -19,7 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 }*/
                 headers: request.headers.set('Authorization', `Bearer ${currentUser.token}`)
             });
-            console.log(request);
+            console.log(request.headers);
         }
 
         return next.handle(request);
