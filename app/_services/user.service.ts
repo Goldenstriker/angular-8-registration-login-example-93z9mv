@@ -18,4 +18,8 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(this.baseURL+`/users/${id}`);
     }
+
+    getCurrentLoggedIn(){
+        return this.http.get<User>(this.baseURL+`/current_user/`);
+    }
 }
