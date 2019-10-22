@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService, UserService } from "./_services";
 import { User } from "./_models";
 
 @Component({ selector: "app", templateUrl: "app.component.html" })
-export class AppComponent {
+export class AppComponent implements OnInit {
   currentUser: User;
   currentLoggedInUser: string;
   constructor(
@@ -15,9 +15,9 @@ export class AppComponent {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
-    this.userService
-      .getCurrentLoggedIn()
-      .subscribe(x => (this.currentLoggedInUser = x.username));
+  }
+  ngOnInit() {
+    this.userService.getCurrentLoggedIn().subscribe(x => console.log(x));
   }
 
   logout() {
