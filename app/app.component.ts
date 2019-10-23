@@ -13,14 +13,15 @@ export class AppComponent implements OnInit {
     private userService: UserService
   ) {
     this.authenticationService.currentUser.subscribe(
-      x => (this.currentUser = x)
+      x => {if(x){this.currentUser = x;
+      this.userService.getCurrentLoggedIn().subscribe(y => {
+      this.currentLoggedInUser = y.user;
+      console.log(y.user);
+    });}}
     );
   }
   ngOnInit() {
-    this.userService.getCurrentLoggedIn().subscribe(x => {
-      this.currentLoggedInUser = x.user;
-      console.log(x.user);
-    });
+    
   }
 
   logout() {
